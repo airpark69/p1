@@ -55,7 +55,7 @@ def order(request):
         order_item = Order.objects.get(pk = shop_item.order_set.latest('id').id)
         for food in food_list:
             order_item.orderfood_set.create(food_name = food)
-        return HttpResponse(status=200)
+        return render(request, 'order/success.html')
     elif request.method == 'GET':
         order_list = Order.objects.all()
         return render(request, 'order/order_list.html', {'order_list': order_list})
