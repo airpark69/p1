@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import pymysql
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = "django-insecure-lr2w$8t%61rx^(&jmfh&%65mkypuc4gcx429*os%d8lm1%bfwa
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ec2-43-201-101-213.ap-northeast-2.compute.amazonaws.com']
+ALLOWED_HOSTS = ['ec2-54-180-116-51.ap-northeast-2.compute.amazonaws.com']
 
 
 # Application definition
@@ -75,6 +76,8 @@ WSGI_APPLICATION = "p1.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+
+pymysql.install_as_MySQLdb()
 
 DATABASES = {
     "default": {
