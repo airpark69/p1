@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "order",
     "delivery",
+    "user",
     "rest_framework"
 ]
 
