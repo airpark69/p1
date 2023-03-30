@@ -11,9 +11,6 @@ from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 def user(request):
     if request.method == 'GET':
-        # shop = Shop.objects.all()
-        # serializer = ShopSerializer(shop, many=True)
-        # return JsonResponse(serializer.data, safe=False)
         user = User.objects.all()
         return render(request, 'user/user_list.html', {'user_list':user})
 
@@ -24,3 +21,17 @@ def user(request):
             serializer.save()
             return JsonResponse(serializer.data, status=201)
         return JsonResponse(serializer.errors, status=400)
+
+@csrf_exempt
+def login(request):
+    if request.method == 'POST':
+        user_name = request.POST['user_name']
+        try:
+            request.session['user_id'] = User.objects.get(user_name=user_name).id
+            print(request.session['user_id'])
+        except:
+            print("로그인 에러")
+            return render(request, 'user/fail.html')
+        return render(request, 'user/success.html')
+    elif request.method == 'GET':
+        return render(request, 'user/login.html')

@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-lr2w$8t%61rx^(&jmfh&%65mkypuc4gcx429*os%d8lm1%bfwa
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ec2-54-180-116-51.ap-northeast-2.compute.amazonaws.com', 'ELB-291304836.ap-northeast-2.elb.amazonaws.com']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -78,21 +78,30 @@ WSGI_APPLICATION = "p1.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-pymysql.install_as_MySQLdb()
-
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "project1",
-        "USER" : "admin",
-        "PASSWORD" : "km123123!",
-        "HOST" : "database-1.c7izjy7c9hey.ap-northeast-2.rds.amazonaws.com",
-        "PORT" : "3306",
-        "OPTIONS" : {
-            'init_command' : "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
     }
 }
+
+
+###### for AWS RDS
+# pymysql.install_as_MySQLdb()
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "project1",
+#         "USER" : "admin",
+#         "PASSWORD" : "km123123!",
+#         "HOST" : "database-1.c7izjy7c9hey.ap-northeast-2.rds.amazonaws.com",
+#         "PORT" : "3306",
+#         "OPTIONS" : {
+#             'init_command' : "SET sql_mode='STRICT_TRANS_TABLES'"
+#         }
+#     }
+# }
 # DB name : project1
 # password : km123123!
 
